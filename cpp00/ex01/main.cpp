@@ -26,7 +26,8 @@ static void AddUserToPhoneBook(PhoneBook &phonebook) {
     }
 
     std::cout << std::setiosflags(std::ios_base::left) << std::setw(14)
-              << GetFieldName(i) << " : ";
+              << GetFieldName(i) << " : "
+              << std::resetiosflags(std::ios_base::left);
     std::getline(std::cin, input[i]);
 
     ++try_cnt;
@@ -47,8 +48,17 @@ static void SearchPhoneBook(PhoneBook &phonebook) {
 
   std::cerr << kSearchIndexMenu;
 
+  if (!phonebook.GetUserCnt())
+    return;
+
   std::string input;
   std::getline(std::cin, input);
+
+  if (std::cin.eof()) {
+    ClearEof();
+    return;
+  }
+
   std::stringstream stream;
   stream.str(input);
 
@@ -61,7 +71,6 @@ static void SearchPhoneBook(PhoneBook &phonebook) {
     return;
   }
 
-  PrintSearchTableHead();
   PrintSearchedValue(phonebook.GetUser(index));
 }
 
@@ -80,8 +89,7 @@ static void  ExecuteInput(PhoneBook &phonebook, std::string input) {
     exit(EXIT_SUCCESS);
   } else if (input == "") {
     phonebook.SetTryCnt(0);
-  }
-  else phonebook.IncreaseTryCnt();
+  } else phonebook.IncreaseTryCnt();
 }
 
 int main(void) {

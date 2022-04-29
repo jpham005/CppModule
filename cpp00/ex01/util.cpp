@@ -1,5 +1,16 @@
+/**
+ * @file util.cpp
+ * @author jaham (jaham@student.42seoul.kr)
+ * @brief 
+ * @version 0.1
+ * @date 2022-04-29
+ * 
+ * Copyright (c) jaham. All rights reserved
+ * 
+ */
 #include <iomanip>
 #include <iostream>
+#include <sstream>
 
 #include "phonebook.hpp"
 
@@ -8,7 +19,7 @@ const std::string kFieldName[] = {
   "First Name",
   "Last Name",
   "Nick Name",
-  "Phone Number",
+  "Phone Num",
   "Darkest Secret"
 };
 
@@ -37,7 +48,7 @@ static void PrintSingleField(const std::string &str) {
     }
   }
 
-  size_t i = 0;
+  std::size_t i = 0;
   while (str[i] && (i + 1 < kFieldWidth)) {
     std::cout << str[i++];
   }
@@ -56,7 +67,10 @@ static void  PrintFieldName(std::size_t start) {
 }
 
 void  PrintFieldValue(const Contact &user) {
-  PrintSingleField(std::to_string(user.GetIndex()));
+  std::stringstream stream;
+  stream << user.GetIndex();
+  PrintSingleField(stream.str());
+
   for (std::size_t i = kFirstName; i + 1 < kFieldNum; ++i) { 
     PrintSingleField(user.GetData(static_cast<DataType>(i)));
   }
@@ -66,21 +80,16 @@ void  PrintFieldValue(const Contact &user) {
 
 void  PrintSearchedValue(const Contact &user) {
   for (std::size_t i = kFirstName; i < kFieldNum; ++i) {
-    PrintSingleField(user.GetData(static_cast<DataType>(i)));
+    std::cout << std::setiosflags(std::ios_base::left) << std::setw(14)
+              << GetFieldName(i) << " : "
+              << std::resetiosflags(std::ios_base::left);
+    std::cout << user.GetData(static_cast<DataType>(i)) << std::endl;
   }
-  std::cout << "|" << std::endl;
-  PrintSeperator();
 }
 
 void  PrintTableHead(void) {
   PrintSeperator();
   PrintFieldName(0);
-  PrintSeperator();
-}
-
-void  PrintSearchTableHead(void) {
-  PrintSeperator();
-  PrintFieldName(1);
   PrintSeperator();
 }
 
