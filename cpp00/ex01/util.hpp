@@ -8,6 +8,7 @@
  * Copyright (c) jaham. All rights reserved
  * 
  */
+#pragma once
 #include <iomanip>
 #include <iostream>
 

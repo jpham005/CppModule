@@ -8,6 +8,7 @@
  * Copyright (c) jaham. All rights reserved
  * 
  */
+#pragma once
 #ifndef SYSTEM_MESSAGE_HPP
 #define SYSTEM_MESSAGE_HPP
 
