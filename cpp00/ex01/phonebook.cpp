@@ -11,11 +11,9 @@
 #include "phonebook.hpp"
 
 PhoneBook::PhoneBook() {
-/*  for (std::size_t i = 0; i < kMaxUserCount; ++i) {
-    this->users_ = NULL;
-  }
-*/
   this->last_ = 0;
+  this->user_cnt_ = 0;
+  this->try_cnt_ = 0;
 }
 
 const Contact &PhoneBook::GetUser(std::size_t index) const {
@@ -26,12 +24,35 @@ std::size_t PhoneBook::GetLast(void) const {
   return (this->last_);
 }
 
+std::size_t PhoneBook::GetUserCnt(void) const {
+  return (this->user_cnt_);
+}
+
+void  PhoneBook::IncreaseUserCnt(void) {
+  ++(this->user_cnt_);
+}
+
+void PhoneBook::SetUserCnt(std::size_t input) {
+  this->user_cnt_ = input;
+}
+
+std::size_t PhoneBook::GetTryCnt(void) const {
+  return (this->try_cnt_);
+}
+
+void  PhoneBook::IncreaseTryCnt(void) {
+  ++(this->try_cnt_);
+}
+
+void PhoneBook::SetTryCnt(std::size_t input) {
+  this->try_cnt_ = input;
+}
+
 void  PhoneBook::AddUser(const Contact &user) {
   if (this->last_ == 8)
     this->last_ = 0;
   this->users_[(this->last_)++] = user;
-}
-
-void  PhoneBook::SearchUser(std::size_t index) {
-
+  
+  if (this->user_cnt_ < 8)
+    ++(this->user_cnt_);
 }

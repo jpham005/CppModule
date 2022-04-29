@@ -8,11 +8,17 @@
  * Copyright (c) jaham. All rights reserved
  * 
  */
-#include "phonebook.hpp"
 #include <iomanip>
 #include <iostream>
 
+#include "phonebook.hpp"
+
 const std::string &GetFieldName(std::size_t type);
 void              PrintSeperator(void);
-void              PrintFieldName(void);
 void              PrintFieldValue(const Contact &user);
+void              PrintSearchedValue(const Contact &user);
+void              PrintTableHead(void);
+void              PrintSearchTableHead(void);
+void              PrintTable(const PhoneBook &phonebook);
+void              ClearEof(void);
+bool              IsValidInput(const std::string input[kDataNum], DataType type);

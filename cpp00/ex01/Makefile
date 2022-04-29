@@ -1,31 +1,36 @@
-NAME			:=	phonebook
+NAME				:=	phonebook
 
-CXX				:=	c++
-CXXFLAGS	:=	#-g -fsanitize=address #-Wall -Wextra -Werror -std=c++98
+CXX					:=	c++
+CXXFLAGS		:=	-std=c++98 -Wall -Wextra -Werror
+DEBUGFLAGS	:=	-g -fsanitize=address
 
-SRCS			:=	main.cpp phonebook.cpp contact.cpp util.cpp
-OBJS			:=	$(SRCS:.cpp=.o)
+SRCS				:=	main.cpp phonebook.cpp contact.cpp util.cpp
+OBJS				:=	$(SRCS:.cpp=.o)
 
-INCLUDES	:=	phonebook.hpp contact.hpp
+INCLUDES		:=	phonebook.hpp contact.hpp util.hpp system_message.hpp
 
-RM				:=	rm -f
+RM					:=	rm -f
 
-.PHONY		:		all
-all				:		$(NAME)
+.PHONY			:		all
+all					:		$(NAME)
 
-$(NAME)		:		$(OBJS) $(INCLUDES)
+$(NAME)			:		$(OBJS) $(INCLUDES)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 
-%.o				:		%.cpp
+.PHONY			:		debug
+debug				:		clean $(OBJS) $(INCLUDES)
+	$(CXX) $(CXXFLAGS) $(DEBUGFLAGS) $(OBJS) -o $(NAME)
+
+%.o					:		%.cpp
 	$(CXX) $(CXXFLAGS) -c $^ -o $@
 
-.PHONY		:		clean
-clean			:
+.PHONY			:		clean
+clean				:
 	$(RM) $(OBJS)
 
-.PHONY		:		fclean
-fclean		:		clean
+.PHONY			:		fclean
+fclean			:		clean
 	$(RM) $(NAME)
 
-.PHONY		:		re
-re				:		fclean all
+.PHONY			:		re
+re					:		fclean all
