@@ -16,7 +16,7 @@
 
 int main(int argc, char **argv) {
   if (argc != 4)
-    return (1);
+    return (0);
 
   std::ifstream input;
   input.open(argv[1], std::ifstream::in);
@@ -39,6 +39,7 @@ int main(int argc, char **argv) {
     else {
       str.erase(search, s1.length());
       str.insert(search, s2);
+      search += s2.length();
     }
   }
 
