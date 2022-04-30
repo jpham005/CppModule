@@ -1,6 +1,7 @@
 # cpp00
 megaphone
 phonebook
+log_gen
 
 # object files
 *.o
