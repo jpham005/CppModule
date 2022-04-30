@@ -1,11 +1,11 @@
-NAME				:=	Hi_this_is_brain
+NAME				:=	Harl_2.0
 
 CXX					:=	c++
 
-SRCS				:=	main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
+SRCS				:=	main.cpp Harl.cpp
 OBJS				:=	$(SRCS:.cpp=.o)
 
-INCLUDES		:= Weapon.hpp HumanA.hpp HumanB.hpp
+INCLUDES		:= harl.hpp
 
 RM					:=	rm -f
 

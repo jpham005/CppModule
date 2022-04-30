@@ -1,7 +1,6 @@
 NAME				:=	Sed_is_for_losers
 
 CXX					:=	c++
-DEBUGFLAGS	:=	-std=c++98 -g
 
 SRCS				:=	main.cpp
 OBJS				:=	$(SRCS:.cpp=.o)
