@@ -95,19 +95,19 @@ bool Fixed::operator!=(const Fixed &fixed) const {
 }
 
 Fixed Fixed::operator+(const Fixed &fixed) const {
-  return (Fixed(this->n_ + fixed.getRawBits()));
+  return (Fixed(this->toFloat() + fixed.toFloat()));
 }
 
 Fixed Fixed::operator-(const Fixed &fixed) const {
-  return (Fixed(this->n_ - fixed.getRawBits()));
+  return (Fixed(this->toFloat() - fixed.toFloat()));
 }
 
 Fixed Fixed::operator*(const Fixed &fixed) const {
-  return (Fixed(this->n_ * fixed.getRawBits()));
+  return (Fixed(this->toFloat() * fixed.toFloat()));
 }
 
 Fixed Fixed::operator/(const Fixed &fixed) const {
-  return (Fixed(this->n_ / fixed.getRawBits()));
+  return (Fixed(this->toFloat() / fixed.toFloat()));
 }
 
 Fixed& Fixed::operator++() {
