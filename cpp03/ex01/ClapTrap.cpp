@@ -13,16 +13,16 @@
 
 #include <iostream>
 
-static const unsigned int kMaxHitPoint = 10;
+static const unsigned int kMaxHitPoint = 100;
 
 ClapTrap::ClapTrap()
     : name_("no_name"), hit_point_(10), energy_point_(10), attack_damage_(0) {
-  std::cout << "Default Constructor called" << std::endl;
+  std::cout << "ClapTrap Default Constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string& name)
     : name_(name), hit_point_(10), energy_point_(10), attack_damage_(0) {
-  std::cout << "String Constructor called" << std::endl;
+  std::cout << "ClapTrap String Constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& copy)
@@ -30,10 +30,11 @@ ClapTrap::ClapTrap(const ClapTrap& copy)
       hit_point_(copy.hit_point_),
       energy_point_(copy.energy_point_),
       attack_damage_(copy.attack_damage_) {
-  std::cout << "Copy Constructor called" << std::endl;
+  std::cout << "ClapTrap Copy Constructor called" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& assign) {
+  std::cout << "ClapTrap Copy Assignment Operator called" << std::endl;
   this->name_ = assign.name_;
   this->hit_point_ = assign.hit_point_;
   this->energy_point_ = assign.energy_point_;
@@ -42,7 +43,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& assign) {
 }
 
 ClapTrap::~ClapTrap() {
-  std::cout << "Destructor called" << std::endl;
+  std::cout << "ClapTrap Destructor called" << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target) {

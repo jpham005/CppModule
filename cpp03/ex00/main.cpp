@@ -9,11 +9,41 @@
  * 
  */
 
+#include <iostream>
+
 #include "ClapTrap.hpp"
 
 int main(void) {
-  ClapTrap a("asdf");
-  ClapTrap b;
+  ClapTrap a("A");
+  ClapTrap b("B");
 
-  b = a;
+  ClapTrap c(a);
+  c.attack("none");
+
+  c = b;
+  c.attack("none");
+
+  a.attack("B");
+  b.takeDamage(a.GetAttackDamage());
+  std::cout << "ep : " << a.GetEnergyPoint() << std::endl;
+  std::cout << b.GetHitPoint() << std::endl;
+
+  b.takeDamage(10);
+  std::cout << b.GetHitPoint() << std::endl;
+
+  b.beRepaired(1);
+  b.beRepaired(1);
+  b.beRepaired(1);
+  b.beRepaired(1);
+  b.beRepaired(1);
+  b.beRepaired(1);
+  std::cout << b.GetHitPoint() << std::endl;
+  std::cout << "ep : " << b.GetEnergyPoint() << std::endl;
+
+  b.attack("a");
+  b.attack("a");
+  b.attack("a");
+  b.attack("a");
+  std::cout << "ep : " << b.GetEnergyPoint() << std::endl;
+  b.attack("a");
 }
