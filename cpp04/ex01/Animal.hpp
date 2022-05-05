@@ -27,6 +27,7 @@ class Animal {
 
   virtual void makeSound() const;
   const std::string& getType() const;
+  virtual void SetBrain(const std::string&);
 };
 
 #endif

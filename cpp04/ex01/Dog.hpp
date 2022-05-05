@@ -14,8 +14,12 @@
 #pragma once
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Dog : public Animal {
+ private:
+  Brain* brain;
+
  public:
   Dog();
   Dog(const Dog& copy);
@@ -23,6 +27,8 @@ class Dog : public Animal {
   ~Dog();
 
   void makeSound() const;
+  void SwapValue(Dog swap);
+  void SetBrain(const std::string& ideas);
 };
 
 #endif

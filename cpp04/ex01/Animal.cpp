@@ -37,3 +37,5 @@ void Animal::makeSound() const {
 const std::string& Animal::getType() const {
   return (this->type);
 }
+
+void SetBrain(const std::string&) {}
