@@ -33,3 +33,7 @@ Animal::~Animal() {
 void Animal::makeSound(void) const {
   std::cout << "Animal Sound" << std::endl;
 }
+
+const std::string& Animal::Gettype() const {
+  return (this->type);
+}

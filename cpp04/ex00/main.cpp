@@ -14,42 +14,29 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 
-template<class T>
-class Test {
-  public:
-    Test(std::string& name, const T& value);
-  private:
-    std::string &name;
-    const T value;
-};
-
 int main(void) {
-  // Animal *animal;
+  Animal *animal;
 
-  // animal = new Cat();
-  // animal->makeSound();
-  // delete animal;
+  animal = new Cat();
+  animal->makeSound();
+  delete animal;
 
-  // animal = new Dog();
-  // animal->makeSound();
-  // delete animal;
+  animal = new Dog();
+  animal->makeSound();
+  delete animal;
 
-  // Animal *cat = new Cat();
-  // Animal *dog = new Dog();
+  std::cout << "===================================" << std::endl;
 
-  // *cat = *dog;
-  // cat->makeSound();
+  Animal *cat = new Cat();
+  Animal *dog = new Dog();
 
-  // delete cat;
-  // delete dog;
-
-  std::string dog("asdf");
-  std::string cat("zxcv");
-
-  Test<int> a(dog, 2);
-  Test<int> b(cat, 3);
-
-  a = b;
+  *cat = *dog;
+  cat->makeSound();
+  std::cout << cat->Gettype() << std::endl;
+  dog->makeSound();
+  std::cout << dog->Gettype() << std::endl;
+  delete cat;
+  delete dog;
 
   return (0);
 }
