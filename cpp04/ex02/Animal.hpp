@@ -18,9 +18,6 @@
 #include "Brain.hpp"
 
 class Animal {
- private:
-  void SwapValue(Animal swap);
-
  protected:
   std::string type;
   Brain* brain;
@@ -28,10 +25,10 @@ class Animal {
  public:
   Animal();
   Animal(const Animal& copy);
-  Animal& operator=(const Animal& assign);
+  Animal& operator=(const Animal& rhs);
   virtual ~Animal();
 
-  virtual void makeSound() const;
+  virtual void makeSound() const = 0;
   const std::string& getType() const;
   Brain* GetBrain() const;
 };

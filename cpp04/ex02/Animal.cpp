@@ -22,30 +22,15 @@ Animal::Animal(const Animal& copy)
   std::cout << "Animal Copy Constructor called" << std::endl;
 }
 
-void Animal::SwapValue(Animal swap) {
-  std::string temp_type = swap.type;
-  Brain* temp_brain = swap.brain;
-
-  swap.type = this->type;
-  swap.brain = this->brain;
-
-  this->type = temp_type;
-  this->brain = temp_brain;
-}
-
-Animal& Animal::operator=(const Animal& assign) {
-  this->SwapValue(assign);
-
+Animal& Animal::operator=(const Animal& rhs) {
+  this->type = rhs.type;
+  *(this->brain) = *(rhs.brain);
   return (*this);
 }
 
 Animal::~Animal() {
   delete brain;
   std::cout << "Animal Destructor called" << std::endl;
-}
-
-void Animal::makeSound() const {
-  std::cout << "Animal Sound" << std::endl;
 }
 
 const std::string& Animal::getType() const {

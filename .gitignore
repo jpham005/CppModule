@@ -17,6 +17,7 @@ fixed
 # cpp04
 Polymorphism
 SetWorldOnFire
+AbstractClass
 
 # object files
 *.o

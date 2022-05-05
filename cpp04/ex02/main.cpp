@@ -54,7 +54,7 @@ int main(void) {
     (&cp)->makeSound();
   }
 
-  system("leaks SetWorldOnFire");
+  system("leaks AbstractClass");
 
   return (0);
 }
