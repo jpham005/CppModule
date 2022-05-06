@@ -94,7 +94,8 @@ void Character::unequip(int idx) {
 }
 
 void Character::use(int idx, ICharacter& target) {
-  if (idx < 0 || idx >= kMaxInven || this->inven_[idx]->GetIsEmpty()) {
+  if (idx < 0 || idx >= kMaxInven || !(this->inven_[idx])
+    || this->inven_[idx]->GetIsEmpty()) {
     std::cout << "is invalid slot" << std::endl;
     return;
   }

@@ -20,7 +20,10 @@ Ice::Ice() : AMateria("ice") {
 Ice::~Ice() {}
 
 AMateria* Ice::clone() const {
-  return (new Ice());
+  Ice* ret = new Ice();
+  ret->is_empty_ = this->is_empty_;
+
+  return (ret);
 }
 
 void Ice::use(ICharacter& target) {
