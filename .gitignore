@@ -18,6 +18,7 @@ fixed
 Polymorphism
 SetWorldOnFire
 AbstractClass
+Interface
 
 # object files
 *.o
