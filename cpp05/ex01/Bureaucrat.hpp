@@ -6,23 +6,27 @@
 #include "GradeTooHighException.hpp"
 #include "GradeTooLowException.hpp"
 
+class Form;
+
 class Bureaucrat {
  private:
+  enum { kMaxGrade = 1, kMinGrade = 150, kDefaultGrade = 100 };
+
   const std::string name_;
   int grade_;
-  enum { kMaxGrade = 1, kMinGrade = 150, kDefaultGrade = 100 };
   Bureaucrat& operator=(const Bureaucrat& rhs);
 
  public:
   Bureaucrat() throw();
   Bureaucrat(const std::string& name, int grade);
   Bureaucrat(const Bureaucrat& origin) throw();
-  ~Bureaucrat();
+  ~Bureaucrat() throw();
 
   const std::string& getName() const;
   int getGrade() const;
   void IncreaseGrade();
   void DecreaseGrade();
+  void signForm(Form& form) const;
 
   typedef GradeTooHighException GradeTooHighException;
   typedef GradeTooLowException GradeTooLowException;
