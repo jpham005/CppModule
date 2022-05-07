@@ -20,6 +20,12 @@ SetWorldOnFire
 AbstractClass
 Interface
 
+# cpp05
+bureaucrat
+form
+28B
+*_shrubbery
+
 # object files
 *.o
 

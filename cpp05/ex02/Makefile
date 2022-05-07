@@ -1,9 +1,11 @@
-NAME        :=	bureaucrat
+NAME        :=	28B
 
 CXX					:=	c++
 CXXFLAGS		:=	-std=c++98 -Wall -Wextra -Werror
 
-CLASS				:=	Bureaucrat GradeTooHighException GradeTooLowException
+CLASS				:=	Bureaucrat GradeTooHighException GradeTooLowException Form \
+								ShrubberyCreationForm RobotomyRequestForm PresidentialPardonForm \
+								FormNotSignedException BureaucratException
 INTERFACE		:=
 
 SRCS				:=	main.cpp $(addsuffix .cpp, $(CLASS))
