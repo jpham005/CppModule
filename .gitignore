@@ -27,6 +27,9 @@ form
 *_shrubbery
 coffee_maker
 
+# cpp06
+convert
+
 # object files
 *.o
 
