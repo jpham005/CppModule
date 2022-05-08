@@ -1,10 +1,11 @@
-NAME        :=	form
+NAME        :=	coffee_maker
 
 CXX					:=	c++
 CXXFLAGS		:=	-std=c++98 -Wall -Wextra -Werror
 
 CLASS				:=	Bureaucrat GradeTooHighException GradeTooLowException Form \
-								BureaucratException
+								ShrubberyCreationForm RobotomyRequestForm PresidentialPardonForm \
+								FormNotSignedException BureaucratException Intern
 INTERFACE		:=
 
 SRCS				:=	main.cpp $(addsuffix .cpp, $(CLASS))

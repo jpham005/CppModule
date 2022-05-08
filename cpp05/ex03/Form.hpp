@@ -34,8 +34,11 @@ class Form {
   void beSigned(const Bureaucrat& bureaucrat);
   void signForm(const Bureaucrat& bureaucrat);
 
+  virtual void execute(Bureaucrat const& executor) const = 0;
+
   typedef GradeTooHighException GradeTooHighException;
   typedef GradeTooLowException GradeTooLowException;
+  typedef FormNotSignedException FormNotSignedException;
 };
 
 std::ostream& operator<<(std::ostream& ostream, const Form& form);

@@ -1,4 +1,3 @@
-#include "Bureaucrat.hpp"
 #include "Form.hpp"
 
 int main() {
@@ -21,23 +20,29 @@ int main() {
     }
   }
 
-  std::cout << "------------------------------------------" << std::endl;
-
-  {
-    try {
-      Form c("asdf", 0, 140);
-    } catch (std::exception& e) {
-      std::cout << e.what() << std::endl;
-    }
-  }
+  std::cout << "=================================================" << std::endl;
 
   Bureaucrat a("jaham", 1);
-  Bureaucrat b("weak jaham", 120);
+  Bureaucrat b("weak jaham", 140);
 
-  Form c("very important form", 10, 130);
+  Form c("formA", 135, 145);
 
   std::cout << c << std::endl;
-  c.beSigned(b);
-  c.beSigned(a);
+  try {
+    b.signForm(c);
+  } catch (BureaucratException& e) {
+    std::cout << "Bureaucrat " << e.GetBureaucratName() << " couldn't sign "
+              << e.GetFormName() << " because " << e.what() << "." << std::endl;
+  }
+
+  std::cout << c << std::endl;
+
+  try {
+    a.signForm(c);
+  } catch (BureaucratException& e) {
+    std::cout << "Bureaucrat " << e.GetBureaucratName() << " couldn't sign "
+              << e.GetFormName() << " because " << e.what() << "." << std::endl;
+  }
+
   std::cout << c << std::endl;
 }

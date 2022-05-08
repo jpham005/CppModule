@@ -1,4 +1,8 @@
 #include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+
+#include <stdlib.h>
 
 int main() {
   {
@@ -22,52 +26,114 @@ int main() {
 
   std::cout << "=================================================" << std::endl;
 
-  Bureaucrat a("jaham", 1);
-  Bureaucrat b("weak jaham", 140);
+  Bureaucrat strong("strong jaham", 1);
+  Bureaucrat weak("weak jaham", 140);
 
-  ShrubberyCreationForm c("jaham");
+  ShrubberyCreationForm shrubbery_form("hola");
 
-  std::cout << c << std::endl;
-  try {
-    c.beSigned(b);
-  } catch (BureaucratException& e) {
-    std::cout << "Bureaucrat " << e.GetBureaucratName() << " couldn't sign "
-              << e.GetFormName() << " because " << e.what() << "." << std::endl;
-  }
+  std::cout << shrubbery_form << std::endl;
 
   try {
-    c.execute(b);
+    strong.executeForm(shrubbery_form);
   } catch (BureaucratException& e) {
-    std::cout << "Bureaucrat " << e.GetBureaucratName() << " couldn't execute "
-              << e.GetFormName() << " because " << e.what() << "." << std::endl;
+    e.PrintError("execute");
   } catch (std::exception& e) {
     std::cout << "Execution fail : " << e.what() << std::endl;
   }
 
-  try {
-    c.beSigned(a);
-  } catch (BureaucratException& e) {
-    std::cout << "Bureaucrat " << e.GetBureaucratName() << " couldn't sign "
-              << e.GetFormName() << " because " << e.what() << "." << std::endl;
-  }
+  std::cout << "===============================================" << std::endl;
 
   try {
-    c.execute(b);
+    weak.signForm(shrubbery_form);
   } catch (BureaucratException& e) {
-    std::cout << "Bureaucrat " << e.GetBureaucratName() << " couldn't execute "
-              << e.GetFormName() << " because " << e.what() << "." << std::endl;
+    e.PrintError("sign");
+  }
+
+  std::cout << shrubbery_form << std::endl;
+
+  try {
+    weak.executeForm(shrubbery_form);
+  } catch (BureaucratException& e) {
+    e.PrintError("execute");
   } catch (std::exception& e) {
     std::cout << "Execution fail : " << e.what() << std::endl;
   }
 
+  std::cout << "===============================================" << std::endl;
+
   try {
-    c.execute(a);
+    strong.executeForm(shrubbery_form);
   } catch (BureaucratException& e) {
-    std::cout << "Bureaucrat " << e.GetBureaucratName() << " couldn't execute "
-              << e.GetFormName() << " because " << e.what() << "." << std::endl;
+    e.PrintError("execute");
   } catch (std::exception& e) {
     std::cout << "Execution fail : " << e.what() << std::endl;
   }
 
-  std::cout << c << std::endl;
+  std::cout << shrubbery_form << std::endl;
+
+  std::cout << "=================================================" << std::endl;
+
+  PresidentialPardonForm presidential("bob");
+
+  std::cout << presidential << std::endl;
+  try {
+    weak.signForm(presidential);
+  } catch (BureaucratException& e) {
+    e.PrintError("sign");
+  }
+
+  std::cout << presidential << std::endl;
+
+  try {
+    strong.signForm(presidential);
+  } catch (BureaucratException& e) {
+    e.PrintError("sign");
+  }
+
+  std::cout << presidential << std::endl;
+
+  try {
+    strong.executeForm(presidential);
+  } catch (BureaucratException& e) {
+    e.PrintError("execute");
+  } catch (std::exception& e) {
+    std::cout << "Execution fail : " << e.what() << std::endl;
+  }
+
+  std::cout << presidential << std::endl;
+
+  std::cout << "=================================================" << std::endl;
+
+  RobotomyRequestForm robotomy("human");
+
+  std::cout << robotomy << std::endl;
+  try {
+    weak.signForm(robotomy);
+  } catch (BureaucratException& e) {
+    e.PrintError("sign");
+  }
+
+  std::cout << robotomy << std::endl;
+
+  try {
+    strong.signForm(robotomy);
+  } catch (BureaucratException& e) {
+    e.PrintError("sign");
+  }
+
+  std::cout << robotomy << std::endl;
+
+ srand(time(NULL));
+
+ for (int i = 0; i < 10; ++i) {
+  try {
+    strong.executeForm(robotomy);
+  } catch (BureaucratException& e) {
+    e.PrintError("execute");
+  } catch (std::exception& e) {
+    std::cout << "Execution fail : " << e.what() << std::endl;
+  }
+ }
+
+  std::cout << robotomy << std::endl;
 }

@@ -7,9 +7,9 @@ Bureaucrat::Bureaucrat() throw() : name_("no name"), grade_(kDefaultGrade) {}
 Bureaucrat::Bureaucrat(const std::string& name, int grade)
     : name_(name), grade_(grade) {
   if (this->grade_ < 1)
-    throw GradeTooHighException();
+    throw Bureaucrat::GradeTooHighException();
   if (this->grade_ > 150)
-    throw GradeTooLowException();
+    throw Bureaucrat::GradeTooLowException();
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& origin) throw()
@@ -41,7 +41,7 @@ void Bureaucrat::DecreaseGrade() {
 
 void Bureaucrat::signForm(Form& form) const {
   form.beSigned(*this);
-  std::cout << this->name_ << "signed" << form.GetName() << std::endl;
+  std::cout << this->name_ << " signed " << form.GetName() << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& ostream, const Bureaucrat& bureaucrat) {

@@ -15,8 +15,6 @@ class BureaucratException : public std::exception {
   BureaucratException(const std::string& bureaucrat,
                       const std::string& form) throw();
   ~BureaucratException() throw();
-
   const std::string& GetBureaucratName() const throw();
   const std::string& GetFormName() const throw();
-  void PrintError(const std::string& type) const throw();
 };
