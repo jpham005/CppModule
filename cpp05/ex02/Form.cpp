@@ -48,13 +48,6 @@ void Form::beSigned(const Bureaucrat& bureaucrat) {
   this->is_signed_ = true;
 }
 
-void Form::signForm(const Bureaucrat& bureaucrat) {
-  if (this->execute_grade_ < bureaucrat.getGrade())
-    throw Form::GradeTooLowException(bureaucrat.getName(), this->name_);
-
-  this->is_signed_ = true;
-}
-
 std::ostream& operator<<(std::ostream& ostream, const Form& form) {
   ostream << "-----------------------------------------\n"
           << "name : " << form.GetName() << "\n"

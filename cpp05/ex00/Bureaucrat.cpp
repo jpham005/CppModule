@@ -6,8 +6,10 @@ Bureaucrat::Bureaucrat() throw() : name_("no name"), grade_(kDefaultGrade) {}
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade)
     : name_(name), grade_(grade) {
-  if ((this->grade_ < 1) || (this->grade_ > 150))
-    throw std::out_of_range("Grade out of range");
+  if (this->grade_ < 1)
+    throw GradeTooHighException();
+  if (this->grade_ > 150)
+    throw GradeTooLowException();
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& origin) throw()

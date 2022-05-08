@@ -13,7 +13,6 @@ class Form {
     kDefaultExecuteGrade = 100
   };
 
- protected:
   const std::string name_;
   bool is_signed_;
   const int sign_grade_;
@@ -25,14 +24,13 @@ class Form {
   Form() throw();
   Form(const std::string& name, int sign_grade, int execute_grade);
   Form(const Form& origin);
-  virtual ~Form() throw();
+  ~Form() throw();
 
   const std::string& GetName() const throw();
   bool GetIsSigned() const throw();
   int GetSignGrade() const throw();
   int GetExecuteGrade() const throw();
   void beSigned(const Bureaucrat& bureaucrat);
-  void signForm(const Bureaucrat& bureaucrat);
 
   typedef GradeTooHighException GradeTooHighException;
   typedef GradeTooLowException GradeTooLowException;
