@@ -1,9 +1,9 @@
-NAME        :=	convert
+NAME        :=	identify
 
 CXX					:=	c++
 CXXFLAGS		:=	-std=c++98 -Wall -Wextra -Werror
 
-CLASS				:= Convert
+CLASS				:=	Base A B C
 INTERFACE		:=
 
 SRCS				:=	main.cpp $(addsuffix .cpp, $(CLASS))

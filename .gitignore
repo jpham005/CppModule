@@ -29,6 +29,8 @@ coffee_maker
 
 # cpp06
 convert
+serialization
+identify
 
 # object files
 *.o

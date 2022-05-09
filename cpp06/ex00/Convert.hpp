@@ -1,6 +1,5 @@
 #pragma once
 
-#include <sstream>
 #include <string>
 
 class Convert {
@@ -8,15 +7,23 @@ class Convert {
   Convert(const char* str) throw();
   ~Convert() throw();
 
-  void PrintConverted() const throw();
+  void PrintInput() const throw();
 
  private:
-  const std::string input_;
+  const char* input_;
+  const double value_;
+  char* endptr_;
 
-  const std::string& ToCharString() const throw();
-  const std::string& ToIntString() const throw();
-  const std::string& ToFloatString() const throw();
-  const std::string& ToDoubleString() const throw();
+  void PrintChar(char printing) const throw();
+  void PrintInt(int printing) const throw();
+  void PrintFloat(float printing) const throw();
+  void PrintDouble(double printing) const throw();
+  void PrintNan() const throw();
+  void PrintInfPos() const throw();
+  void PrintInfNeg() const throw();
+  void PrintInffPos() const throw();
+  void PrintInffNeg() const throw();
+  void PrintConverted() const throw();
 
   Convert(const Convert& origin);
   Convert& operator=(const Convert& rhs);
