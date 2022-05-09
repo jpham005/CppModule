@@ -29,7 +29,7 @@ int main() {
 
   std::cout << c << std::endl;
   try {
-    b.signForm(c);
+    b.signForm(c); // better if catch in Bureaucrat
   } catch (BureaucratException& e) {
     std::cout << "Bureaucrat " << e.GetBureaucratName() << " couldn't sign "
               << e.GetFormName() << " because " << e.what() << "." << std::endl;

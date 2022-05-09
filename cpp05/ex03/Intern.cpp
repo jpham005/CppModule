@@ -12,6 +12,7 @@ const std::string Intern::forms_[kMaxFormNum] = {
   "presidential pardon"
 };
 
+// should not try - catch here
 Form* Intern::makeForm(const std::string& name, const std::string& target) {
   std::size_t i = 0;
   while ((i < kMaxFormNum) && (this->forms_[i] != name))
