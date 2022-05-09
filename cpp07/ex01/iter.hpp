@@ -3,7 +3,7 @@
 #include <iostream>
 
 template <typename T>
-void Print(const T& arg) {
+void Print(T& arg) {
   std::cout << arg;
 }
 
