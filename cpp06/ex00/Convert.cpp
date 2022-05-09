@@ -46,7 +46,7 @@ void Convert::PrintConverted() const throw() {
   this->PrintChar(static_cast<char>(printing));
   this->PrintInt(static_cast<int>(printing));
   this->PrintFloat(static_cast<float>(printing));
-  this->PrintDouble(static_cast<double>(printing));
+  this->PrintDouble(printing);
 }
 
 void Convert::PrintNan() const throw() {
@@ -73,15 +73,15 @@ void Convert::PrintInfNeg() const throw() {
 void Convert::PrintInffPos() const throw() {
   std::cout << "char: Non displayable" << "\n"
             << "int: -2147483648" << "\n"
-            << "float: inff" << "\n";
-  this->PrintDouble(1e50);
+            << "float: inff" << "\n"
+            << "double: inff" << std::endl;
 }  
 
 void Convert::PrintInffNeg() const throw() {
   std::cout << "char: Non displayable" << "\n"
             << "int: -2147483648" << "\n"
-            << "float: -inff" << "\n";
-  this->PrintDouble(-1e50);
+            << "float: -inff" << "\n"
+            << "double: -inff" << std::endl;
 }
 
 void Convert::PrintInput() const throw() {
@@ -100,3 +100,6 @@ void Convert::PrintInput() const throw() {
   else
     PrintConverted();
 }
+
+// double printing = "inf"
+// std::cout << printing results inf
