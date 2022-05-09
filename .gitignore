@@ -32,6 +32,10 @@ convert
 serialization
 identify
 
+# cpp07
+start
+iter
+
 # object files
 *.o
 
