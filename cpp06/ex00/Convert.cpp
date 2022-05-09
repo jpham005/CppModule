@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+#include <cmath>
 #include <cstdlib>
 
 Convert::Convert(const char* str) throw()
@@ -56,50 +57,11 @@ void Convert::PrintNan() const throw() {
   this->PrintDouble(NAN);
 }
 
-void Convert::PrintInfPos() const throw() {
-  std::cout << "char: Non displayable" << "\n"
-            << "int: -2147483648" << "\n"
-            << "float: inff" << "\n"
-            << "double: inf" << std::endl;
-}
-
-void Convert::PrintInfNeg() const throw() {
-  std::cout << "char: Non displayable" << "\n"
-            << "int: -2147483648" << "\n"
-            << "float: -inff" << "\n"
-            << "double: -inf" << std::endl;
-}
-
-void Convert::PrintInffPos() const throw() {
-  std::cout << "char: Non displayable" << "\n"
-            << "int: -2147483648" << "\n"
-            << "float: inff" << "\n"
-            << "double: inff" << std::endl;
-}  
-
-void Convert::PrintInffNeg() const throw() {
-  std::cout << "char: Non displayable" << "\n"
-            << "int: -2147483648" << "\n"
-            << "float: -inff" << "\n"
-            << "double: -inff" << std::endl;
-}
-
 void Convert::PrintInput() const throw() {
   std::string input = this->input_;
 
   if (input == "nan")
     this->PrintNan();
-  else if (input == "inf")
-    this->PrintInfPos();
-  else if (input == "-inf")
-    this->PrintInfNeg();
-  else if (input == "inff")
-    this->PrintInffPos();
-  else if (input == "-inff")
-    this->PrintInffNeg();
   else
     PrintConverted();
 }
-
-// double printing = "inf"
-// std::cout << printing results inf
