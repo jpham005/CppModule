@@ -37,6 +37,10 @@ start
 iter
 array
 
+# cpp08
+easyfind
+span
+
 # object files
 *.o
 
