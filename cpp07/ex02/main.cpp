@@ -1,5 +1,6 @@
 #include <iostream>
-#include <Array.hpp>
+
+#include "Array.hpp"
 
 #define MAX_VAL 750
 int main(int, char**)
@@ -18,6 +19,9 @@ int main(int, char**)
         Array<int> tmp = numbers;
         Array<int> test(tmp);
     }
+
+    Array<int> tmp = numbers;
+    Array<int> test(tmp);
 
     for (int i = 0; i < MAX_VAL; i++)
     {
@@ -49,5 +53,20 @@ int main(int, char**)
         numbers[i] = rand();
     }
     delete [] mirror;//
+
+    for (int i = 0; i < MAX_VAL; i++) {
+      if (test[i] != tmp[i]) {
+        std::cout << "no match" << std::endl;
+        break;
+      }
+    }
+
+    for (int i = 0; i < MAX_VAL; i++) {
+      if (numbers[i] != tmp[i]) {
+        std::cout << "no match" << std::endl;
+        break;
+      }
+    }
+
     return 0;
 }
