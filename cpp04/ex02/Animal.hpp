@@ -20,7 +20,7 @@
 class Animal {
  protected:
   std::string type;
-  Brain* brain;
+  Brain* brain; // no brain here
 
  public:
   Animal();
