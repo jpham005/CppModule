@@ -56,17 +56,21 @@ int main(int, char**)
 
     for (int i = 0; i < MAX_VAL; i++) {
       if (test[i] != tmp[i]) {
-        std::cout << "no match" << std::endl;
+        std::cout << "no match with same value, fail" << std::endl;
         break;
       }
     }
 
     for (int i = 0; i < MAX_VAL; i++) {
       if (numbers[i] != tmp[i]) {
-        std::cout << "no match" << std::endl;
+        std::cout << "no match with changed vaule, success" << std::endl;
         break;
       }
     }
+
+    const Array<int> consty(numbers);
+    std::cout << "consty test: " << consty[0] << std::endl;
+    // consty[0] = 1; // can't modify const value
 
     return 0;
 }

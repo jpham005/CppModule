@@ -35,10 +35,16 @@ class Array {
 
   T& operator[](std::size_t index) {
     if (index >= this->size_)
-      throw std::out_of_range("index out of range");
-
+      throw std::exception(); // throw out_of_range("index out of range");
     return data_[index];
   }
+
+  const T& operator[](std::size_t index) const {
+    if (index >= this->size_)
+      throw std::exception();
+    return data_[index];
+  }
+
   std::size_t size() const throw() {
     return this->size_;
   }
