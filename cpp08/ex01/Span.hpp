@@ -3,12 +3,6 @@
 #include <set>
 
 class Span {
- private:
-  typedef std::multiset<int>::iterator iterator;
-
-  std::multiset<int> nums_;
-  unsigned int max_;
-
  public:
   Span(unsigned int n);
   Span(const Span& origin);
@@ -16,7 +10,20 @@ class Span {
   ~Span();
 
   void addNumber(int n);
-  void addNumber(iterator begin, iterator end);
+  template <typename InputIterator>
+  void addNumber(InputIterator begin, InputIterator end) {
+    while (begin != end) {
+      addNumber(*(begin));
+      ++begin;
+    }
+  }
   int shortestSpan() const;
   int longestSpan() const;
+
+
+ private:
+  typedef std::multiset<int>::iterator iterator;
+
+  std::multiset<int> nums_;
+  unsigned int max_;
 };

@@ -2,6 +2,8 @@
 
 #include <stdexcept>
 
+#include <climits>
+
 Span::Span(unsigned int n) : max_(n) {}
 
 Span::Span(const Span& origin) : max_(origin.max_) {
@@ -23,14 +25,9 @@ void Span::addNumber(int n) {
   this->nums_.insert(n);
 }
 
-void Span::addNumber(iterator begin, iterator end) {
-  while (begin != end)
-    addNumber(*(begin++));
-}
-
 int Span::shortestSpan() const {
   if (this->nums_.size() <= 1)
-    throw std::range_error("insert more elements");
+    throw std::range_error("need more elements");
 
   iterator i = this->nums_.begin(), j = ++this->nums_.begin(),
            end = this->nums_.end();
@@ -50,7 +47,7 @@ int Span::shortestSpan() const {
 
 int Span::longestSpan() const {
   if (this->nums_.size() <= 1)
-    throw std::range_error("insert more elements");
+    throw std::range_error("need more elements");
 
   return *(--this->nums_.end()) - *(this->nums_.begin());
 }
