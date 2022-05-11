@@ -14,7 +14,7 @@ class Array {
  public:
   Array() : data_(NULL), size_(0) {}
   Array(unsigned int nelem) : data_(new T[nelem]), size_(nelem) {}
-  Array(const Array& origin) {
+  Array(const Array& origin) : Array() {
     if (origin.size_) {
       this->data_ = new T[origin.size_];
       this->size_ = origin.size_;
@@ -35,7 +35,7 @@ class Array {
 
   T& operator[](std::size_t index) {
     if (index >= this->size_)
-      throw std::exception(); // throw out_of_range("index out of range");
+      throw std::exception(); // throw std::out_of_range("index out of range");
     return data_[index];
   }
 
