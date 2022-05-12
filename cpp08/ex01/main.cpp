@@ -50,4 +50,14 @@ int main() {
 
   std::cout << sp.shortestSpan() << std::endl;
   std::cout << sp.longestSpan() << std::endl;
+
+  std::cout << "================================" << std::endl;
+
+  Span over(2);
+
+  over.addNumber(INT_MAX);
+  over.addNumber(INT_MIN);
+
+  std::cout << over.shortestSpan() << std::endl;
+  std::cout << over.longestSpan() << std::endl;
 }

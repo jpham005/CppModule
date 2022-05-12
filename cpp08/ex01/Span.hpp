@@ -17,8 +17,8 @@ class Span {
       ++begin;
     }
   }
-  int shortestSpan() const;
-  int longestSpan() const;
+  unsigned int shortestSpan() const;
+  unsigned int longestSpan() const;
 
 
  private:
@@ -26,4 +26,6 @@ class Span {
 
   std::multiset<int> nums_;
   unsigned int max_;
+
+  unsigned int GetSpan(iterator i, iterator j) const;
 };

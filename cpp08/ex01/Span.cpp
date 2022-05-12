@@ -1,5 +1,6 @@
 #include "Span.hpp"
 
+#include <iostream>
 #include <stdexcept>
 
 #include <climits>
@@ -25,29 +26,45 @@ void Span::addNumber(int n) {
   this->nums_.insert(n);
 }
 
-int Span::shortestSpan() const {
+unsigned int Span::GetSpan(iterator i, iterator j) const {
+  unsigned int ret;
+
+  if (*j < 0) {
+    ret = *j - *i;
+  } else {
+    ret = *j;
+    ret -= *i;
+  }
+
+  return ret;
+}
+
+unsigned int Span::shortestSpan() const {
   if (this->nums_.size() <= 1)
     throw std::range_error("need more elements");
 
   iterator i = this->nums_.begin(), j = ++this->nums_.begin(),
            end = this->nums_.end();
 
-  unsigned int span = *j++ - *i++;
+  unsigned int ret = GetSpan(i, j);
+
   while (j != end) {
-    if (static_cast<unsigned int>(*j - *i) < span)
-      span = *j - *i;
+    unsigned int curr = GetSpan(i, j);
+    if (ret > curr)
+      ret = curr;
     ++i;
     ++j;
   }
 
-  if (span > INT_MAX)
-    throw std::overflow_error("span has been overflowed");
-  return span;
+  return ret;
 }
 
-int Span::longestSpan() const {
+unsigned int Span::longestSpan() const {
   if (this->nums_.size() <= 1)
     throw std::range_error("need more elements");
 
-  return *(--this->nums_.end()) - *(this->nums_.begin());
+  unsigned int ret = *(--this->nums_.end());
+  ret -= *(this->nums_.begin()); 
+
+  return ret;
 }
